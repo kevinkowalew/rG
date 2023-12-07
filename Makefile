@@ -1,2 +1,2 @@
 build:
-	go build -o ~/go/bin/rG rg.go
+	go build -o ~/go/bin/rG main.go

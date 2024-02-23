@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"log"
 	"os"
 	"os/exec"
@@ -52,10 +51,6 @@ func (t table) View() string {
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		log.Fatal("You must provide one search term for your query")
-	}
-
 	results, err := execute(strings.Join(os.Args[1:], " "))
 	if err != nil {
 		log.Fatal(err.Error())
@@ -95,7 +90,7 @@ func execute(s string) ([]list.Item, error) {
 
 		p := strings.Split(line, ":")
 		if len(p) < 3 {
-			return nil, errors.New("Failed to parse grep result from line: " + line)
+			continue
 		}
 
 		result := grepResult{

@@ -56,8 +56,10 @@ func main() {
 		log.Fatal(err.Error())
 	}
 
+	l := list.New(results, list.NewDefaultDelegate(), 0, 0)
+	l.Title = strings.Join(os.Args[1:], " ")
 	m := table{
-		list: list.New(results, list.NewDefaultDelegate(), 0, 0),
+		list: l,
 		delegate: func(gr grepResult) {
 			err := openVim(gr)
 			if err != nil {

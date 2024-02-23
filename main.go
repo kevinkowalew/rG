@@ -61,6 +61,7 @@ func main() {
 	m := table{
 		list: l,
 		delegate: func(gr grepResult) {
+			tea.ClearScreen()
 			err := openVim(gr)
 			if err != nil {
 				log.Fatal(err)
